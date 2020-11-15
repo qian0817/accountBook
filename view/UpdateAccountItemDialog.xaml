@@ -1,0 +1,40 @@
+﻿<ContentDialog
+    x:Class="accountBook.view.UpdateAccountItemDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="修改账单信息"
+    PrimaryButtonText="保存"
+    SecondaryButtonText="删除"
+    CloseButtonText="取消"
+    DefaultButton="Primary"
+    >
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <ComboBox
+            DisplayMemberPath="Item1"
+            Header="分类"
+            ItemsSource="{x:Bind Categories}"
+            SelectedValue="{x:Bind SelectedCategory, Mode=TwoWay}"
+            SelectedValuePath="Item2"
+            Width="300" />
+        <CalendarDatePicker
+            Date="{x:Bind CreateTime, Mode=TwoWay}"
+            Header="时间"
+            PlaceholderText="Pick a date"
+            Width="300" />
+        <TextBox
+            Header="金额"
+            HorizontalAlignment="Left"
+            PlaceholderText="0.00"
+            Text="{x:Bind Money, Mode=TwoWay}"
+            Width="300" />
+        <TextBox
+            Header="备注"
+            HorizontalAlignment="Left"
+            InputScope="Number"
+            PlaceholderText="备注信息"
+            Text="{x:Bind Remark, Mode=TwoWay}"
+            Width="300" />
+    </StackPanel>
+
+</ContentDialog>

@@ -1,0 +1,15 @@
+﻿<Page
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d"
+    x:Class="accountBook.view.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="30 30">
+        <Button Click="OutputToExcel">导出所有账本信息</Button>
+        <Button Click="OpenGithubPage" Background="White">账单助手</Button>
+        <Button Click="MailToDevloper" Background="White">钱磊</Button>
+    </StackPanel>
+</Page>

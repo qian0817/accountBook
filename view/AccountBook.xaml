@@ -1,0 +1,101 @@
+﻿<Page
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d"
+    x:Class="accountBook.view.AccountBook"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:accountBook.model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <ComboBox
+                Margin="50,0"
+                SelectedValue="{x:Bind Year, Mode=TwoWay}"
+                SelectionChanged="ComboBox_SelectionChanged"
+                Width="100">
+                <x:String>2017</x:String>
+                <x:String>2018</x:String>
+                <x:String>2019</x:String>
+                <x:String>2020</x:String>
+            </ComboBox>
+            <ComboBox
+                Margin="50,0"
+                SelectedValue="{x:Bind Month, Mode=TwoWay}"
+                SelectionChanged="ComboBox_SelectionChanged"
+                Width="100">
+                <x:String>1</x:String>
+                <x:String>2</x:String>
+                <x:String>3</x:String>
+                <x:String>4</x:String>
+                <x:String>5</x:String>
+                <x:String>6</x:String>
+                <x:String>7</x:String>
+                <x:String>8</x:String>
+                <x:String>9</x:String>
+                <x:String>10</x:String>
+                <x:String>11</x:String>
+                <x:String>12</x:String>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock
+                FontSize="30"
+                Foreground="Green"
+                Text="月总收入" />
+            <TextBlock
+                FontSize="30"
+                Foreground="Green"
+                Margin="10,0,20,0"
+                Text="{x:Bind IncomeMoney, Mode=TwoWay}" />
+            <TextBlock
+                FontSize="30"
+                Foreground="Red"
+                Text="月总支出" />
+            <TextBlock
+                FontSize="30"
+                Foreground="Red"
+                Margin="10,0,20,0"
+                Text="{x:Bind SpendingMoney, Mode=TwoWay}" />
+        </StackPanel>
+
+        <GridView ItemsSource="{x:Bind AccountList, Mode=TwoWay}" SelectionMode="Single">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:AccountItem">
+                    <StackPanel
+                        Height="100"
+                        Orientation="Horizontal"
+                        Tag="{x:Bind Id}"
+                        Width="450">
+                        <StackPanel
+                            Height="100"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                FontSize="70"
+                                Foreground="{x:Bind TextColor}"
+                                Height="100"
+                                HorizontalAlignment="Right"
+                                Text="{x:Bind MoneyToString}"
+                                VerticalAlignment="Center"
+                                Width="300" />
+                        </StackPanel>
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            Margin="30,0"
+                            Width="250">
+                            <TextBlock FontSize="25" Text="{x:Bind Remark}" />
+                            <TextBlock Text="{x:Bind CreateTime.ToLongDateString()}" />
+                            <TextBlock Text="{x:Bind Category.Name}" />
+                            <Button
+                                Click="ShowUpdateAccountItemDialog"
+                                Content="编辑"
+                                Tag="{x:Bind Id}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </StackPanel>
+</Page>

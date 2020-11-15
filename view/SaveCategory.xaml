@@ -1,0 +1,66 @@
+﻿<Page
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d"
+    x:Class="accountBook.view.SaveCategory"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:accountBook.model"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Pivot>
+        <PivotItem Header="收入">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Text="{x:Bind CategoryName, Mode=TwoWay}"
+                        Width="300" />
+                    <Button
+                        Click="AddIncomeCategory"
+                        Content="新增分类"
+                        Margin="30,0" />
+                </StackPanel>
+                <GridView ItemsSource="{x:Bind IncomeCategories, Mode=TwoWay}" SelectionMode="Single">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Category">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Bind Name}" Width="200" />
+                                <Button
+                                    Click="DeleteCategory"
+                                    Content="删除"
+                                    Tag="{x:Bind Id}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Header="支出">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Text="{x:Bind CategoryName, Mode=TwoWay}"
+                        Width="300" />
+                    <Button
+                        Click="AddSpendingCategory"
+                        Content="新增分类"
+                        Margin="30,0" />
+                </StackPanel>
+                <GridView ItemsSource="{x:Bind SpendingCategories, Mode=TwoWay}" SelectionMode="Single">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Category">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Bind Name}" Width="200" />
+                                <Button
+                                    Click="DeleteCategory"
+                                    Content="删除"
+                                    Tag="{x:Bind Id}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+        </PivotItem>
+    </Pivot>
+</Page>
